@@ -14,11 +14,11 @@ mongoose
 
 const myAds = [
   {
-    title: "Nuevo proyecto1",
+    title: "Nuevo proyecto de Ska busca Trompetista",
     types: "Singer",
-    description: "klhglhkgjkhk",
-    styles: "Pop",
-    instrument: "Guitarra",
+    description: "Somos una nueva formación de Madrid y queremos tratar de lanzar una nueva ola de ska nosotros solos, porque tenemos más valor que Jon Snow cargando él solo contra el ejército de los Bolton. Necesitamos un/a trompetista valiente, que se sienta capaz de retar a Louis Armstrong a un duelo de metales y salir victorioso. Somos 4 integrantes hasta ahora y ensayamos cerca de Moratalaz.",
+    styles: "Ska",
+    mainInstrument: "Trompeta",
     creator_id: "5a81c8a2a3e84508689d8ebd",
     city: "Madrid",
     imageUrl: "imageurl",
@@ -29,11 +29,11 @@ const myAds = [
   },
 
   {
-    title: "Nuevo proyecto2",
+    title: "Cosmic Treadmills busca Guitarrista y Teclista",
     types: "Group",
-    description: "klhglhkgjkhk",
+    description: "¡Buenas! Somos los Cosmic Treadmills, un grupo nuevo de rock progresivo con temática en torno a Flash y sus viajes en el tiempo. Necesitamos un teclista versátil y atrevido, que no se limite sólo a tocar notas largas en un Hammond; y uno de estos guitarristas que acaban logrando que se te caiga la mandíbula al escucharle. Queremos empezar a componer pronto así que si te ves reflejado en una de las dos descripciones, escríbemos!",
     styles: "Rock",
-    instrument: "Guitarra",
+    mainInstrument: "Guitarra",
     city: "Barcelona",
     imageUrl: "imageurl",
     timestamps: {
@@ -43,12 +43,12 @@ const myAds = [
   },
 
   {
-    title: "Nuevo proyecto3",
+    title: "Sanchez & The Mortys busca Cantante",
     types: "Singer",
-    description: "klhglhkgjkhk",
+    description: " *burp - Ven a tocar con nosotros, Morty, ven a - burp - unirte a nuestra banda experimental fusión. Haremos viajes interestelares, tocaremos jazz ácido digno de Primus o Mr Bungle y - burp - reinaremos en toda la galaxia. Ahora en serio, tenemos un local cerca de SS de los Reyes y necesitamos un  cantante innovador",
     styles: "Jazz",
-    instrument: "Guitarra",
-    city: "Alicante",
+    mainInstrument: "Guitarra",
+    city: "Madrid",
     imageUrl: "imageurl",
     timestamps: {
       createdAt: "created_at",

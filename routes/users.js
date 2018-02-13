@@ -19,8 +19,8 @@ const ensureLoggedIn = (redirect_url) => {
     }
 }
 
-userRoutes.get("/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
-  res.render("users/new-user", {
+userRoutes.get("/views/users/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
+  res.render("/views/users/new-user", {
     city: City,
     mainInstrument: Instrument,
     otherInstrument: Instrument,
@@ -29,11 +29,58 @@ userRoutes.get("/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
 });
 
 userRoutes.post("/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
-
-    const {username, city, description, mainInstrument, otherInstrument, experience} = req.body;
+  const {username, city, description, mainInstrument, otherInstrument, experience} = req.body;
 });
 
 module.exports = userRoutes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 
@@ -73,5 +120,4 @@ router.get("/profile/:id", (req,res,next) => {
   }).catch(e => next(e))
 });
 
-  module.exports = router;
   */

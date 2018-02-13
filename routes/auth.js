@@ -42,7 +42,8 @@ authRoutes.post("/signup", (req, res, next) => {
       if (err) {
         res.render("auth/signup", { message: "Something went wrong" });
       } else {
-        res.redirect("/new-user");
+        console.log("created successfuly")
+        res.redirect("/");
       }
     });
   });
