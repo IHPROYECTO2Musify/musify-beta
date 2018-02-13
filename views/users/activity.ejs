@@ -1,6 +1,6 @@
 
-<h2>Edita tus datos</h2>
-
+<h2>Mi actividad</h2>
+<div class="profile">
 <h2>Avatar: <%=  user.imgUrl %></h2>
 <h2>Nombre de usuario: <%=  user.username %></h2>
 <h2>Correo electrónico: <%=  user.email %></h2>
@@ -9,7 +9,11 @@
 <h2>Instrumento principal: <%=  user.mainInstrument %></h2>
 <h2>Otros instrumentos: <%=  user.otherInstrument %></h2>
 <h2>Experiencia: <%=  user.experience %></h2>
+</div>
 
-<a href="<%= user.id %>/edit">Guardar cambios</a>
+<button type="submit">Editar datos</button>
+
+
+<!-- <a href="<%= user.id %>/edit">Guardar cambios</a> -->
 
 

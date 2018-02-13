@@ -36,17 +36,19 @@ authRoutes.post("/signup", (req, res, next) => {
       password: hashPass,
       city,
       mainInstrument
-    });
-
-    newUser.save((err) => {
-      if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
-      } else {
-        console.log("created successfuly")
-        res.redirect("/");
-      }
-    });
-  });
+    })
+        .save()
+        .then(user => {
+          req.login(user, err => {
+            if (err)
+              return res.render("auth/signup", {
+                // message: req.flash("No se puede iniciar sesión")
+              });
+            req.user = user;
+            res.redirect("/users/new-user");
+          });
+        });
+   });
 });
 
 
