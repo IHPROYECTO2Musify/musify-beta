@@ -19,6 +19,8 @@ mongoose.connect(dbURL)
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 
+const ad = require('./routes/ad');
+
 const app = express();
 
 // view engine setup
@@ -51,6 +53,7 @@ app.use((req,res,next) => {
 
 app.use('/', index);
 app.use('/auth', auth);
+app.use('/ad', ad);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
