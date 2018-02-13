@@ -1,0 +1,78 @@
+<!-- views/users/new-user.ejs -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 centered-form">
+      <form action="/campaign/new" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="title">Crea tu perfil</label>
+          <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="profile-picture">Avatar</label>
+          <input type="file" name="Imagen" class="form-control">
+          <p>Ésta será tu imagen de perfil. Puedes cambiarla cuando quieras desde las opciones de edición de perfil.</p>
+        </div>
+        <div class="form-group">
+          <label for="name-surname">Nombre y apellidos *</label>
+          <input type="text" name="Tu nombre" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="name-surname">Descripción</label>
+          <p>Aquí tienes la opción de incluir un breve resumen sobre tu trayectoria musical, tus expectativas o proyección,
+            curiosidades...</p>
+          <input type="text" name="Tu nombre" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="main-instr">Instrumento principal *</label>
+          <br>
+          <p>Selecciona el instrumento con el que mejor te defiendas. Puedes añadir otros instrumentos después.</p>
+          <select name="mainInstrument" id="instrument">
+            <% mainInstrument.forEach((mainInstrument) => { %>
+              <option type="text" value="<%= mainInstrument %>" class="form-control">
+                <%= mainInstrument %>
+              </option>
+              <%  }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="experience">Experiencia</label>
+          <br>
+          <p>Indica a otros usuarios el nivel que tienes en tu instrumento principal.</p>
+          <select name="experience" id="level">
+            <% experience.forEach((experience) => { %>
+              <option type="text" value="<%= experience %>" class="form-control">
+                <%= experience %>
+              </option>
+              <%  }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="main-instr">Otros instrumentos</label>
+          <br>
+          <p>¿Hay otro instrumento que toques? Inclúyelo aquí.</p>
+          <select name="otherInstrument" id="oth-instrument">
+            <% mainInstrument.forEach((mainInstrument) => { %>
+              <option type="text" value="<%= mainInstrument %>" class="form-control">
+                <%= mainInstrument %>
+              </option>
+              <%  }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="city">Ciudad *</label>
+          <br>
+          <select name="city" id="city">
+            <% city.forEach((city) => { %>
+              <option type="text" value="<%= city %>" class="form-control">
+                <%= city %>
+              </option>
+              <%  }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">Create Campaign</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
