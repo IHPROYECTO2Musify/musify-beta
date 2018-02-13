@@ -12,7 +12,7 @@ const userSchema = new Schema({
     description: String,
     mainInstrument: { type: String, enum: Instrument, required: true }, 
     otherInstrument: { type: String, enum: Instrument}, 
-    experience: { type: String, enum: Experience}, //¿o poner en string normal?
+    experience: { type: String, enum: Experience},
     imgUrl: { type: String, default: "https://placeholdit.imgix.net/~text?txtsize=50&txt=Ironfunding&w=250&h=250" }
 },{
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

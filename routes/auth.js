@@ -8,12 +8,14 @@ const Instrument = require('../models/InstrumentsEnum');
 const bcryptSalt = 10;
 
 authRoutes.get("/signup", (req, res, next) => {
-  res.render("auth/signup", { city: City }, {mainInstrument: Instrument});
+  res.render("auth/signup", { city: City , mainInstrument: Instrument});
 });
 
 authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const city = req.body.city;
+  const mainInstrument= req.body.mainInstrument;
 
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
@@ -31,7 +33,9 @@ authRoutes.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      city,
+      mainInstrument
     });
 
     newUser.save((err) => {

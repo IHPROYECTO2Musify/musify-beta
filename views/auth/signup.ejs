@@ -1,5 +1,5 @@
 
-<!-- <!-- <h2>Regístrate en Musify</h2> -->
+<h2>Regístrate en Musify</h2>
 
 <form action="/auth/signup" method="POST" id="form-container">
   <p class="reel-in">
@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <label for="main-instr">Instrumento Principal</label><br>
-    <select name="mainInstrument" id="city">
+    <select name="mainInstrument" id="instrument">
       <% mainInstrument.forEach((mainInstrument) => { %>
         <option type="text" value="<%= mainInstrument %>" class="form-control"><%= mainInstrument %></option>
       <%  }) %>
