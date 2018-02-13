@@ -3,7 +3,7 @@ const router = express.Router();
 const City= require('../models/CitiesEnum');
 const Instrument = require('../models/InstrumentsEnum');
 const Types = require('../models/StylesEnum');
-//const debug = require('debug')('m2-0118-ironfunding:campaign');
+const debug = require('debug')('m2-0118-ironfunding:campaign');
 const Ad = require('../models/Ads');
 
 // Upload files with multer
@@ -41,23 +41,25 @@ router.post('/new', [ensureLoggedIn('/auth/login')], (req, res, next) => {
    // , upload.single('image')
 
     const { title, types, description, styles, city} = req.body;
+    console.log(req.body)
 
-    const newCampaign = new Campaign({
+    const newAd = new Ad({
         title, types, description, styles, city,
         // We're assuming a user is logged in here
         // If they aren't, this will throw an error
         creator_id: req.user._id,
-        imgUrl: req.file.filename
+        //imgUrl: req.file.filename
     });
 
     newAd.save().then(c => {
-        debug('Created ad');
-        req.flash('info', "Ad created")
+        //debug('Created ad');
+        //req.flash('info', "Ad created")
+        console.log("hola");
         res.redirect('/');
     })
         .catch(e => {
-            debug('Error creating ad');
-            req.flash('info', e.message)
+            // debug('Error creating ad');
+            // req.flash('info', e.message)
             res.redirect('/ad/new');
         })
 });

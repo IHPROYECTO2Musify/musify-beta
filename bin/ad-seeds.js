@@ -18,7 +18,7 @@ const myAds = [
     types: "Singer",
     description: "klhglhkgjkhk",
     styles: "Pop",
-    instrument: "Guitarra",
+    mainInstrument: "Guitarra",
     creator_id: "5a81c8a2a3e84508689d8ebd",
     city: "Madrid",
     imageUrl: "imageurl",
@@ -33,7 +33,8 @@ const myAds = [
     types: "Group",
     description: "klhglhkgjkhk",
     styles: "Rock",
-    instrument: "Guitarra",
+    mainInstrument: "Guitarra",
+    creator_id: "5a81c8a2a3e84508689d8ebd",
     city: "Barcelona",
     imageUrl: "imageurl",
     timestamps: {
@@ -47,7 +48,8 @@ const myAds = [
     types: "Singer",
     description: "klhglhkgjkhk",
     styles: "Jazz",
-    instrument: "Guitarra",
+    mainInstrument: "Guitarra",
+    creator_id: "5a81c8a2a3e84508689d8ebd",
     city: "Alicante",
     imageUrl: "imageurl",
     timestamps: {

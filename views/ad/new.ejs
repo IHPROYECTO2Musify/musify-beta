@@ -2,7 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 centered-form">
-      <form action="/campaign/new" method="post" enctype="multipart/form-data">
+      <!-- <form action="/ad/new" method="post" enctype="multipart/form-data"> -->
+      <form action="/ad/new" method="post">
+        
         <div class="form-group">
           <label for="title">Nombre de tu grupo o Proyecto</label>
           <input type="text" name="title" class="form-control">
@@ -42,13 +44,13 @@
         </div>
         
         <div class="form-group">
-          <label for="deadline">¿Habéis grabado alguna canción?</label>
-          <input type="file" name="video" class="form-control">
+          <label for="audio">¿Habéis grabado alguna canción?</label>
+          <input type="text" name="video" class="form-control">
         </div>
         
         <div class="form-group">
-          <label for="deadline">¿Tenéis videos en directo?</label>
-          <input type="file" name="video" class="form-control">
+          <label for="video">¿Tenéis videos en directo?</label>
+          <input type="text" name="video" class="form-control">
         </div>
         
         <div class="form-group">
