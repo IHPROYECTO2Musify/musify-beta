@@ -14,14 +14,20 @@
   <div class="form-group">
     <label for="city">Ciudad</label><br>
     <select name="city" id="city">
-      <% CitiesEnum.forEach((city) => { %>
+      <% city.forEach((city) => { %>
         <option type="text" value="<%= city %>" class="form-control"><%= city %></option>
       <%  }) %>
     </select>
   </div>
 
-  <label for="mainInstrument">Instrumento</label>
-  <input id="mainInstrument" type="" name="password" >
+  <div class="form-group">
+    <label for="main-instr">Instrumento Principal</label><br>
+    <select name="mainInstrument" id="city">
+      <% mainInstrument.forEach((mainInstrument) => { %>
+        <option type="text" value="<%= mainInstrument %>" class="form-control"><%= mainInstrument %></option>
+      <%  }) %>
+    </select>
+  </div>
 
   <% if (typeof message !== "undefined") { %>
     <div class="error-message"><%= message %></div>

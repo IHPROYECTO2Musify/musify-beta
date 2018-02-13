@@ -3,10 +3,12 @@ const authRoutes = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require('passport')
 const User = require("../models/User");
+const City= require('../models/CitiesEnum');
+const Instrument = require('../models/InstrumentsEnum');
 const bcryptSalt = 10;
 
 authRoutes.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { city: City }, {mainInstrument: Instrument});
 });
 
 authRoutes.post("/signup", (req, res, next) => {
