@@ -1,8 +1,11 @@
 <!-- views/users/new-user.ejs -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 centered-form">
-      <form action="/campaign/new" method="post" enctype="multipart/form-data">
+    <div class="col-sm-6 col-sm-offset-3 centered-form"></div>
+      <form action="/users/new-user" method="post" enctype="multipart/form-data">
+        <div>
+          <p>¡Bienvenido a Musify! Ahora que ya estás registrado, vamos a completar tu perfil. <br> Recuerda que aunque no todos los campos son obligatorios, cuanta más información puedas ofrecer, mejor será la idea que se puedan hacer otros usuarios de ti como músico</p>
+        </div>
         <div class="form-group">
           <label for="title">Crea tu perfil</label>
           <input type="text" name="title" class="form-control">
