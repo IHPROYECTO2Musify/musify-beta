@@ -35,7 +35,7 @@ module.exports = [
     "Rap",
     "Reggae",
     "Reggaeton (... ¿en serio? ¿No prefieres... qué se yo, montar Legos?)",
-    "Rock n Roll",
+    "Rock",
     "Salsa",
     "Samba",
     "Ska",

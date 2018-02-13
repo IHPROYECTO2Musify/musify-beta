@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Instrument = require('./Instruments');
-const Experience= require('./Exp');
-//const City= require('./Cities');
+const Instrument = require('./InstrumentsEnum');
+const Experience= require('./ExpEnum');
+const City= require('./CitiesEnum');
 
 const userSchema = new Schema({
     username: {type: String, required: true }, 
     password: String,
     email: String,
-    //city: {type: String, enum: City, required: true},
+    city: {type: String, enum: City, required: true},
     description: String,
     mainInstrument: { type: String, enum: Instrument, required: true }, 
     otherInstrument: { type: String, enum: Instrument}, 

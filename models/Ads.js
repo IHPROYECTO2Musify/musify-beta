@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//const Types = require('./Styles');
-//const Instrument = require ('./Instruments');
-const City = require ('./Cities'); 
+const Types = require('./StylesEnum');
+const Instrument = require ('./InstrumentsEnum');
+const City = require ('./CitiesEnum'); 
 
 const adsSchema = new Schema({
   title: { type: String, required: true },

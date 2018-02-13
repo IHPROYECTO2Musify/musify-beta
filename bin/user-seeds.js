@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const firstUsers = require("../models/User");
-//const firstAds= require('../models/Ads');
-const Instrument = require("../models/Instruments");
-const Experience = require("../models/Exp");
-// const City= require('./Cities');
+const firstAds= require('../models/Ads');
+const Instrument = require("../models/InstrumentsEnum");
+const Experience = require("../models/ExpEnum");
+const City= require('../models/CitiesEnum');
 
 mongoose
   .connect("mongodb://localhost/passport-auth-0118")
@@ -14,7 +14,7 @@ const myUsers = [
     username: "Hanzo Shimada",
     password: "123",
     email: "ryuuga_waga@gmail.com",
-    //city: 'Madrid',
+    city: 'Madrid',
     description:
       "Lorem fistrum no te digo trigo por no llamarte Rodrigor va usté muy cargadoo diodeno. Hasta luego Lucas qué dise usteer pupita sexuarl. ",
     mainInstrument: "Bajo",
@@ -30,7 +30,7 @@ const myUsers = [
     username: "Enjuto Mojamuto",
     password: "456",
     email: "inten-neee@gmail.com",
-    //city: 'Madrid',
+    city: 'Madrid',
     description:
       "Qué dise usteer diodeno a wan va usté muy cargadoo ese hombree diodenoo fistro no te digo trigo por no llamarte Rodrigor. Ahorarr tiene musho peligro amatomaa llevame al sircoo quietooor. ",
     mainInstrument: "Guitarra",
@@ -45,7 +45,7 @@ const myUsers = [
     username: "Elvis Lennon",
     password: "789",
     email: "sergeantburger@fakemail.com",
-    //city: 'Madrid',
+    city: 'Madrid',
     description:
       "A gramenawer amatomaa se calle ustée ese pedazo de pupita te va a hasé pupitaa está la cosa muy malar. Te va a hasé pupitaa mamaar",
     mainInstrument: "Teclado",
