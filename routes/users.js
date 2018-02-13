@@ -28,11 +28,27 @@ userRoutes.get("/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
   });
 });
 
+//GOD FUCKING DAMMIT. HAY QUE SACAR ESTO.
+
 userRoutes.post("/new-user", ensureLoggedIn('/auth/login'), (req, res, next) => {
   const {username, city, description, mainInstrument, otherInstrument, experience} = req.body;
+}
+if (username === "" || mainInstrument === "" || city === "") {
+  res.render("users/new-user", { message: "Los campos marcados con un asterisco son obligatorios" });
+  return;
+}
+  .save()
+  .then(user => {
+    req.login(user, err => {
+      if (err)
+        return res.render("users/new-user", {
+          // message: req.flash("No se puede iniciar sesión")
+        });
+      req.user = user;
+      res.redirect("/users/activity");
+    });
+  });
 });
-
-
 
 module.exports = userRoutes;
 
