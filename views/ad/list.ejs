@@ -1,0 +1,51 @@
+<h1>Listado de Anuncios</h1>
+
+<div id="list">
+  <% if (list.length > 0) { %>
+    <% list.forEach(function(user) { %>
+      <div>
+        <h4>
+          <%= user.title %>
+        </h4>
+
+        <ul>
+          <li>Grupo o invidual:
+            <%= user.types %>
+          </li>
+
+          <li>Descripción:
+            <%= user.description %>
+          </li>
+
+          <li>Estilos y Etiquetas:
+            <%= user.styles %>
+          </li>
+
+          <li>Instrumento Principal:
+            <%= user.mainInstrument %>
+          </li>
+
+          <li>Ciudad:
+            <%= user.city %>
+          </li>
+
+          <li>Audio:
+            <%= user.audio %>
+          </li>
+
+          <li>Video:
+            <%= user.video %>
+          </li>
+
+          <!-- <a href="/edit/<%= user._id %>">Edit</a><br>
+              <a href="/delete/<%= user._id %>">Delete</a> -->
+        </ul>
+      </div>
+      <hr>
+      <% }) %>
+        <% } else { %>
+          <div>
+            <p>The list is empty</p>
+          </div>
+          <% } %>
+</div>

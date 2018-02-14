@@ -40,84 +40,83 @@ router.get('/new', ensureLoggedIn('/auth/login'), (req, res) => {
 router.post('/new', [ensureLoggedIn('/auth/login')], (req, res, next) => {
    // , upload.single('image')
 
-    const { title, types, description, styles, city} = req.body;
+    const { title, types, description, styles, mainInstrument, audio, video, city} = req.body;
     console.log(req.body)
 
     const newAd = new Ad({
-        title, types, description, styles, city,
+        title, types, description, styles, mainInstrument, city, audio, video, 
         // We're assuming a user is logged in here
         // If they aren't, this will throw an error
         creator_id: req.user._id,
         //imgUrl: req.file.filename
     });
-
+    console.log(newAd)
     newAd.save().then(c => {
         //debug('Created ad');
         //req.flash('info', "Ad created")
-        console.log("hola");
-        res.redirect('/');
+        res.redirect('/ad/list');
     })
         .catch(e => {
             // debug('Error creating ad');
             // req.flash('info', e.message)
-            res.redirect('/ad/new');
+            res.redirect('/');
         })
 });
 
-
-// router.get('/:id', (req, res, next) => {
-//     Ad.findById(req.params.id).populate('creator_id')
-//         .then(c => res.render('ad/show', { ad: c }))
-//         .catch(e => next(e));
-// });
-
-// router.get('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
-//     Ad.findById(req.params.id, (err, ad) => {
-//         if (err) { return next(err) }
-//         if (!ad) { return next(new Error("404")) }
-//         return res.render('ad/edit', { ad, types: TYPES })
-//     });
-// });
+router.get("/list", (req,res) => {
+    Ad.find().exec((err, list) => {
+      res.render("ad/list", {list: list});
+    });
+  });
+  
 
 
-// router.post('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
-//     const updates = {
-//         title: req.body.title,
-//         goal: req.body.goal,
-//         description: req.body.description,
-//         category: req.body.category,
-//         deadline: req.body.deadline
-//     };
+router.get('/show/:id', (req, res, next) => {
+    Ad.findById(req.params.id).populate('creator_id')
+        .then(c => res.render('ad/show', { ad: c }))
+        .catch(e => next(e));
+});
 
-//     Campaign.findByIdAndUpdate(req.params.id, updates, (err, campaign) => {
-//         if (err) {
-//             req.flash('info','Errores al editar');
-//             return res.render('campaign/edit', {
-//                 campaign,
-//                 errors: campaign.errors
-//             });
-//         }
-//         if (!campaign) {
-//             return next(new Error('Error al editar, la campaña no existe'));
-//         }
-//         req.flash('info','Campaña editada!');
-//         return res.redirect(`/campaign/${campaign._id}`);
-//     });
-// });
+router.get('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
+    Ad.findById(req.params.id, (err, ad) => {
+        if (err) { return next(err) }
+        if (!ad) { return next(new Error("404")) }
+        return res.render('ad/edit', { ad: ad, city: City, mainInstrument: Instrument, styles: Types })
+    });
+});
 
-// router.get('/:id/pledge/:amount',(req,res)=>{
-//     Campaign.findById(req.params.id)
-//         .then(c => {
-//             c.totalPledged += parseInt(req.params.amount)
-//             return c.save();
-//         })
-//         .then( c => {
-//             res.json({
-//                 status:"succeded",
-//                 current: c.totalPledged
-//             })
-//         })
-//         .catch(e => next(e));
-// })
+
+router.post('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
+    const updates = { title, types, description, styles, mainInstrument, audio, video, city} = req.body;
+        
+
+    Ad.findByIdAndUpdate(req.params.id, updates, (err, ad) => {
+        if (err) {
+            //req.flash('info','Errores al editar');
+            return res.render('ad/edit', {
+                ad,
+                errors: ad.errors
+            });
+        }
+        if (!ad) {
+            return next(new Error('Error al editar, el anuncio no existe'));
+        }
+        //req.flash('info','Campaña editada!');
+        return res.redirect(`/ad/${ad._id}`);
+    });
+});
+
+router.get("/:id/delete", (req, res) =>{
+    const id = req.params.id;
+    Ad.findById(id).exec((err, ad) => {
+      ad.remove({},(err) =>{
+        res.redirect("/ad/list");
+      })
+      
+    });
+  })
+  
+
+
 
 module.exports = router;

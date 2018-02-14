@@ -21,7 +21,7 @@ const myAds = [
     mainInstrument: "Trompeta",
     creator_id: "5a81c8a2a3e84508689d8ebd",
     city: "Madrid",
-    imageUrl: "imageurl",
+    //imageUrl: "imageurl",
     timestamps: {
       createdAt: "created_at",
       updatedAt: "updated_at"
@@ -35,7 +35,7 @@ const myAds = [
     styles: "Rock",
     mainInstrument: "Guitarra",
     city: "Barcelona",
-    imageUrl: "imageurl",
+    //imageUrl: "imageurl",
     timestamps: {
       createdAt: "created_at",
       updatedAt: "updated_at"
@@ -49,7 +49,7 @@ const myAds = [
     styles: "Jazz",
     mainInstrument: "Guitarra",
     city: "Madrid",
-    imageUrl: "imageurl",
+    //imageUrl: "imageurl",
     timestamps: {
       createdAt: "created_at",
       updatedAt: "updated_at"

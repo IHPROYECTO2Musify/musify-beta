@@ -1,0 +1,112 @@
+<!-- views/campaigns/edit.ejs -->
+<h1>Actualiza tu anuncio</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
+
+      <form action="/ad/<%= ad._id %>/edit" method="post">
+        <div class="form-group">
+          <label for="title">Nombre de tu Grupo o Proyecto</label>
+          <input type="text" name="title" class="form-control" value="<%= ad.title %>">
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="types">Grupo o Individual</label>
+          <input type="text" name="types" class="form-control" value="<%= ad.types %>">
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <input id="description" name="description" class="form-control" value="<%= ad.description %>">
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="city">Ciudad</label>
+          
+          <select name="city" id="city">
+            <% city.forEach((city) => { %>
+              <!-- This selects the campaign's category in the dropdown -->
+              <% if (city === ad.city) { %>
+                <option selected type="text" value="<%= city %>" class="form-control">
+                  <%= city %>
+                </option>
+                <% } else { %>
+                  <option type="text" value="<%= city %>" class="form-control">
+                    <%= city %>
+                  </option>
+                  <% } %>
+                    <%  }) %>
+          </select>
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="styles">Estilos y Etiquetas</label>
+          
+          <select name="styles" id="styles">
+            <% styles.forEach((styles) => { %>
+              <!-- This selects the campaign's category in the dropdown -->
+              <% if (styles === ad.styles) { %>
+                <option selected type="text" value="<%= styles %>" class="form-control">
+                  <%= styles %>
+                </option>
+                <% } else { %>
+                  <option type="text" value="<%= styles %>" class="form-control">
+                    <%= styles %>
+                  </option>
+                  <% } %>
+                    <%  }) %>
+          </select>
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="mainInstrument">Instrumento Principal</label>
+          
+          <select name="mainInstrument" id="mainInstrument">
+            <% mainInstrument.forEach((mainInstrument) => { %>
+              <!-- This selects the campaign's category in the dropdown -->
+              <% if (mainInstrument === ad.mainInstrument) { %>
+                <option selected type="text" value="<%= mainInstrument %>" class="form-control">
+                  <%= mainInstrument %>
+                </option>
+                <% } else { %>
+                  <option type="text" value="<%= mainInstrument %>" class="form-control">
+                    <%= mainInstrument %>
+                  </option>
+                  <% } %>
+                    <%  }) %>
+          </select>
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="audio">Audio</label>
+          <input id="audio" name="audio" class="form-control" value="<%= ad.audio %>">
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+          <label for="video">Video</label>
+          <input id="video" name="video" class="form-control" value="<%= ad.video %>">
+        </div>
+
+        <br/>
+
+        <button type="submit">Actualizar Anuncio</button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>

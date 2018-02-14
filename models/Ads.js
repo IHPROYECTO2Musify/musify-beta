@@ -12,7 +12,7 @@ const adsSchema = new Schema({
   mainInstrument: { type: String, enum: Instrument, required: true },
   creator_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   city: { type: String, enum: City, required: true},
-  imgUrl: { type: String, default: "https://placeholdit.imgix.net/~text?txtsize=50&txt=Ironfunding&w=650&h=250" },
+  //imgUrl: { type: String, default: "https://placeholdit.imgix.net/~text?txtsize=50&txt=Ironfunding&w=650&h=250" },
 
   audio: { type: String, default: "https:// any link" },
   video: { type: String, default: "https:// any link" },
