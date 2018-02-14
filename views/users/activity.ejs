@@ -11,9 +11,7 @@
 <h2>Experiencia: <%=  user.experience %></h2>
 </div>
 
-<button type="submit">Editar datos</button>
-
-
-<!-- <a href="<%= user.id %>/edit">Guardar cambios</a> -->
-
+<a class="btn btn-primary" href="/users/<%= user._id %>/edit">Editar mis datos</a>
+<a class="btn btn-primary" href="/ad/new">Crear anuncio</a>
+<button type="submit">Mis anuncios</button>
 

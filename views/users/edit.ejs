@@ -1,7 +1,100 @@
+<h1>Actualiza tus datos</h1>
 
-<!-- <form action="/profile/<%= user._id %>/edit" method="post">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" >
-  
-    <button type="submit">Edit</button>
-  </form> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
+      <form action="/users/<%= user._id %>/edit" method="post">
+
+        <div class="form-group">
+            <label for="profile-picture"><strong>Avatar</strong></label>
+            <input type="file" name="Imagen" class="form-control" value="<%= user.imgUrl%> "> 
+          </div>
+
+        <div class="form-group">
+          <label for="name">Alias</label>
+          <input type="text" name="username" class="form-control" value="<%=  user.username %>">
+        </div>
+
+        <div class="form-group">
+          <label for="city">Ciudad</label>
+          <select name="city" id="city">
+            <% city.forEach((city) => { %>
+              <!-- This selects the campaign's category in the dropdown -->
+              <% if (city === user.city) { %>
+                <option selected type="text" value="<%= city %>" class="form-control">
+                  <%= city %>
+                </option>
+                <% } else { %>
+                  <option type="text" value="<%= user.city %>" class="form-control">
+                    <%= city %>
+                  </option>
+                  <% } %>
+                    <%  }) %>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input id="description" name="description" class="form-control" value="<%= user.description %>">
+          </div>
+
+          <div class="form-group">
+              <label for="mainInstrument">Instrumento Principal</label>
+              <select name="mainInstrument" id="firstInstrument">
+                <% mainInstrument.forEach((mainInstrument) => { %>
+                  <!-- This selects the campaign's category in the dropdown -->
+                  <% if (mainInstrument === user.mainInstrument) { %>
+                    <option selected type="text" value="<%= mainInstrument %>" class="form-control">
+                      <%= mainInstrument %>
+                    </option>
+                    <% } else { %>
+                      <option type="text" value="<%= user.mainInstrument %>" class="form-control">
+                        <%= mainInstrument %>
+                      </option>
+                      <% } %>
+                        <%  }) %>
+              </select>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Experiencia</label>
+                <select name="experience" id="inst-experience">
+                  <% experience.forEach((experience) => { %>
+                    <!-- This selects the experience level in the dropdown -->
+                    <% if (experience === user.experience) { %>
+                      <option selected type="text" value="<%= experience %>" class="form-control">
+                        <%= experience %>
+                      </option>
+                      <% } else { %>
+                        <option type="text" value="<%= user.experience %>" class="form-control">
+                          <%= experience %>
+                        </option>
+                        <% } %>
+                          <%  }) %>
+                </select>
+              </div>
+
+
+            <div class="form-group">
+                <label for="otherInstrument">Otros instrumentos</label>
+                <select name="otherInstrument" id="side-instrument">
+                  <% otherInstrument.forEach((otherInstrument) => { %>
+                    <!-- This selects the campaign's category in the dropdown -->
+                    <% if (otherInstrument === user.otherInstrument) { %>
+                      <option selected type="text" value="<%= otherInstrument %>" class="form-control">
+                        <%= otherInstrument %>
+                      </option>
+                      <% } else { %>
+                        <option type="text" value="<%= user.otherInstrument %>" class="form-control">
+                          <%= mainInstrument %>
+                        </option>
+                        <% } %>
+                          <%  }) %>
+                </select>
+              </div>
+
+              <button type="submit">Actualizar datos</button>
+          </form>
+         </div>
+        </div>  
+       </div> 
