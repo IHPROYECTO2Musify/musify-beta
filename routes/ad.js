@@ -45,8 +45,6 @@ router.post('/new', [ensureLoggedIn('/auth/login')], (req, res, next) => {
 
     const newAd = new Ad({
         title, types, description, styles, mainInstrument, city, audio, video, 
-        // We're assuming a user is logged in here
-        // If they aren't, this will throw an error
         creator_id: req.user._id,
         //imgUrl: req.file.filename
     });
@@ -115,8 +113,5 @@ router.get("/:id/delete", (req, res) =>{
       
     });
   })
-  
-
-
 
 module.exports = router;

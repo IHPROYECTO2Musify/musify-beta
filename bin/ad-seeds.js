@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').load()
 const mongoose = require("mongoose");
 // const {
 //   dbUrl
