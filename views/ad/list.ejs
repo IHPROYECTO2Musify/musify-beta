@@ -1,4 +1,13 @@
 <h1>Listado de Anuncios</h1>
+<form action="/ad/list" method="post"> 
+<select name="city" id="city">
+  <% city.forEach((city) => { %>
+    <option type="text" value="<%= city %>" class="form-control"><%= city %></option>
+  <%  }) %>
+</select>
+
+<button type="submit">buscar</button>
+</form>
 
 <div id="list">
   <% if (list.length > 0) { %>
