@@ -1,44 +1,59 @@
-<!-- views/users/new-user.ejs -->
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 centered-form"></div>
-      <form action="/users/new-user" method="post" enctype="multipart/form-data">
+      <form action="/users/new-user" method="POST">
         <div>
           <p>¡Bienvenido a Musify! Ahora que ya estás registrado, vamos a completar tu perfil. <br> Recuerda que aunque no todos los campos son obligatorios, cuanta más información puedas ofrecer, mejor será la idea que se puedan hacer otros usuarios de ti como músico</p>
         </div>
+        <br>
         <div class="form-group">
-          <label for="title">Crea tu perfil</label>
-          <input type="text" name="title" class="form-control">
+          <label for="title"><strong>Crea tu perfil</strong></label>
         </div>
+        <br>
         <div class="form-group">
-          <label for="profile-picture">Avatar</label>
-          <input type="file" name="Imagen" class="form-control">
+          <label for="profile-picture"><strong>Avatar</strong></label>
           <p>Ésta será tu imagen de perfil. Puedes cambiarla cuando quieras desde las opciones de edición de perfil.</p>
+          <input type="file" name="Imagen" class="form-control"> 
         </div>
+        <br>
         <div class="form-group">
-          <label for="name-surname">Nombre y apellidos *</label>
-          <input type="text" name="Tu nombre" class="form-control">
+          <label for="name-surname"><strong>Tu alias</strong>*</label>
+          <p>Por este nombre te conocerán los demás usuarios de la red.</p>
+          <input type="text" name="username" class="form-control" value="<%=  user.username %>">
         </div>
+        <br>
         <div class="form-group">
-          <label for="name-surname">Descripción</label>
+            <label for="city"><strong>Ciudad</strong>*</label>
+            <p>¿Dónde vives?</p>
+            <select name="city" id="yourcity">
+                <option type="text" value="<%= user.city %>" class="form-control" selected><%= user.city %></option>
+              <% city.forEach((city) => { %>
+                <option type="text" value="<%= city %>" class="form-control"> <%= city %></option>
+                <%  }) %>
+            </select>
+          </div>
+        <br>
+        <div class="form-group">
+          <label for="name-surname"><strong>Descripción</strong></label>
           <p>Aquí tienes la opción de incluir un breve resumen sobre tu trayectoria musical, tus expectativas o proyección,
             curiosidades...</p>
-          <input type="text" name="Tu nombre" class="form-control">
+          <input type="text" name="description" class="form-control">
         </div>
+        <br>
         <div class="form-group">
-          <label for="main-instr">Instrumento principal *</label>
+          <label for="main-instr"><strong>Instrumento principal</strong>*</label>
           <br>
           <p>Selecciona el instrumento con el que mejor te defiendas. Puedes añadir otros instrumentos después.</p>
           <select name="mainInstrument" id="instrument">
-            <% mainInstrument.forEach((mainInstrument) => { %>
-              <option type="text" value="<%= mainInstrument %>" class="form-control">
-                <%= mainInstrument %>
-              </option>
+              <option type="text" value="<%= user.mainInstrument %>" class="form-control" selected><%= user.mainInstrument %></option>
+            <% mainInstrumentList.forEach((instrument) => { %>
+              <option type="text" value="<%= instrument %>" class="form-control"><%= instrument %></option>
               <%  }) %>
           </select>
         </div>
+        <br>
         <div class="form-group">
-          <label for="experience">Experiencia</label>
+          <label for="experience"><strong>Experiencia</strong></label>
           <br>
           <p>Indica a otros usuarios el nivel que tienes en tu instrumento principal.</p>
           <select name="experience" id="level">
@@ -49,33 +64,23 @@
               <%  }) %>
           </select>
         </div>
+        <br>
         <div class="form-group">
-          <label for="main-instr">Otros instrumentos</label>
+          <label for="main-instr"><strong>Otros instrumentos</strong></label>
           <br>
           <p>¿Hay otro instrumento que toques? Inclúyelo aquí.</p>
           <select name="otherInstrument" id="oth-instrument">
-            <% mainInstrument.forEach((mainInstrument) => { %>
+            <% mainInstrumentList.forEach((mainInstrument) => { %>
               <option type="text" value="<%= mainInstrument %>" class="form-control">
                 <%= mainInstrument %>
               </option>
               <%  }) %>
           </select>
         </div>
+        <br>
         <div class="form-group">
-          <label for="city">Ciudad *</label>
-          <br>
-          <select name="city" id="city">
-            <% city.forEach((city) => { %>
-              <option type="text" value="<%= city %>" class="form-control">
-                <%= city %>
-              </option>
-              <%  }) %>
-          </select>
-        </div>
-        <div class="form-group">
-          <button type="submit">Create Campaign</button>
+          <button type="submit">Crear perfil</button>
         </div>
       </form>
     </div>
   </div>
-</div>

@@ -17,6 +17,8 @@ authRoutes.post("/signup", (req, res, next) => {
   const city = req.body.city;
   const mainInstrument= req.body.mainInstrument;
 
+  console.log(username, password)
+
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
@@ -36,27 +38,28 @@ authRoutes.post("/signup", (req, res, next) => {
       password: hashPass,
       city,
       mainInstrument
-    });
-
-    newUser.save((err) => {
-      if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
-      } else {
-        console.log("created successfuly")
-        res.redirect("/");
-      }
-    });
-  });
+    })
+        .save()
+        .then(user => {
+          req.login(user, err => {
+            if (err)
+              return res.render("auth/signup", {
+              });
+            req.user = user;
+            res.redirect("/users/new-user");
+          });
+        });
+   });
 });
 
-
+// handle login and send user to his private page
 authRoutes.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
 
 authRoutes.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login"
+  successRedirect: ("/users/activity"),
+  failureRedirect: ("/auth/login"),
 }));
 
 authRoutes.get("/logout", (req, res) => {
