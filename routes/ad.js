@@ -74,6 +74,7 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     creator_id: req.user._id
     //imgUrl: req.file.filename
   });
+
   newAd
     .save()
     .then(c => {
@@ -88,10 +89,12 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
       // req.flash('info', e.message)
       res.redirect("/");
     });
+  });
 
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
     res.render("ad/list", { list: list, city: City, styles: Types });
+    });
   });
 
 router.post("/list", (req, res) => {

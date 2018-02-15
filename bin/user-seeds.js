@@ -5,9 +5,9 @@ const firstAds= require('../models/Ads');
 const Instrument = require("../models/InstrumentsEnum");
 const Experience = require("../models/ExpEnum");
 const City= require('../models/CitiesEnum');
+const dbURL= process.env.dbURL;
 
-mongoose
-  .connect("mongodb://localhost/passport-auth-0118")
+mongoose.connect(dbURL)
   .then(() => console.log("Conectado"));
 
 const myUsers = [
