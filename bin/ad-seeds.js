@@ -1,8 +1,5 @@
 const dotenv = require('dotenv').load()
 const mongoose = require("mongoose");
-// const {
-//   dbUrl
-// } = require('../config');
 const firstUsers = require("../models/User");
 const firstAds = require("../models/Ads");
 const Instrument = require("../models/InstrumentsEnum");
@@ -11,8 +8,8 @@ const City = require("../models/CitiesEnum");
 const dbURL= process.env.dbURL;
 
 mongoose.connect(dbURL)
-       .then(() => debug(`Connected to ${dbURL}`))
-       .catch(e => console.log(e))
+        .then(() => debug(`Connected to ${dbURL}`))
+        .catch(e => console.log(e));
 
 const myAds = [
   {

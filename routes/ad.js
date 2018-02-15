@@ -37,6 +37,8 @@ const checkOwnership = (req, res, next) => {
   });
 };
 
+
+//Creating a new ad
 router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
   res.render("ad/new", {
     city: City,
@@ -69,18 +71,16 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     city,
     audio,
     video,
-    // We're assuming a user is logged in here
-    // If they aren't, this will throw an error
     creator_id: req.user._id
     //imgUrl: req.file.filename
   });
+
   newAd
     .save()
     .then(c => {
         console.log("entra")
       //debug('Created ad');
       //req.flash('info', "Ad created")
-      //res.redirect("/ad/list");
       res.redirect("/ad/show/" + c._id);
     })
     .catch(e => {
@@ -88,11 +88,13 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
       // req.flash('info', e.message)
       res.redirect("/");
     });
-});
+  });
 
+//Complete ad list
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
     res.render("ad/list", { list: list, city: City, styles: Types });
+    });
   });
 });
 
@@ -117,14 +119,18 @@ router.post("/list", (req, res) => {
   }  
 });
 
-
-//Filter ads by user ID 
+//Show the user's ads
 router.get("/my-ads", (req, res) => {
-    Ad.find().exec((err, list) => {
-      res.render("ad/my-ads");
-      });
+  Ad.find({creator_id: res.locals.user._id})
+    .then(respuesta => {
+      res.render('ad/my-ads', {list: respuesta})
+    })
+    .catch(error => {
+      console.log(error)
     });
+  });
 
+//Show newly created ad, to edit or delete 
 router.get("/show/:id", (req, res, next) => {
   Ad.findById(req.params.id)
     .populate("creator_id")
@@ -132,6 +138,7 @@ router.get("/show/:id", (req, res, next) => {
     .catch(e => next(e));
 });
 
+//Edit an ad
 router.get("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
   Ad.findById(req.params.id, (err, ad) => {
     if (err) {
@@ -177,6 +184,7 @@ router.post("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
   });
 });
 
+//Delete an ad
 router.get("/:id/delete", (req, res) => {
   const id = req.params.id;
   Ad.findById(id).exec((err, ad) => {
