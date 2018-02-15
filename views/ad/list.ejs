@@ -1,4 +1,7 @@
-<h1>Listado de Anuncios</h1>
+<a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
+<a class="btn btn-primary" href="/ad/my-ads">Mis anuncios</a>
+
+<h1>Listado de anuncios</h1>
 
 <form action="/ad/list" method="post"> 
 <select name="city" id="city">
@@ -27,17 +30,18 @@
           <li>Grupo o invidual:
             <%= user.types %>
           </li>
-          <li>Descripción:
+
             <%= user.description %>
-          </li>
-          <li>Estilos y Etiquetas:
+ 
+          <li>Estilos :
             <%= user.styles %>
           </li>
           <li>Instrumento Principal:
             <%= user.mainInstrument %>
           </li>
-          <li>Ciudad:
+          <li><i>
             <%= user.city %>
+          </i>
           </li>
           <li>Audio:
             <%= user.audio %>

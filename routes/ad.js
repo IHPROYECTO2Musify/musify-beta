@@ -160,6 +160,7 @@ router.post("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
     video,
     city
   } = req.body);
+
   Ad.findByIdAndUpdate(req.params.id, updates, (err, ad) => {
     if (err) {
       //req.flash('info','Errores al editar');
@@ -185,4 +186,5 @@ router.get("/:id/delete", (req, res) => {
     });
   });
 });
+
 module.exports = router;

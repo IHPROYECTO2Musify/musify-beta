@@ -19,18 +19,4 @@ router.get('/onlyme', onlyMe, function(req, res, next) {
   res.render('private');
 });
 
-// router.get('/', function(req, res, next) {
-
-//   Ad
-//   .find({})
-//   .populate('creator_id')
-//   .then((ads) => {
-//     console.log(ads);
-//     res.render('index', { ads });
-//   })
-//   .catch(e => next(e));
-  
-// });
-
-
 module.exports = router;

@@ -1,4 +1,7 @@
 <h1>Mis anuncios</h1>
+
+<a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
+
 <div id="list">
   <% if (list.length > 0) { %>
     <% list.forEach(function(user) { %>
@@ -7,7 +10,7 @@
           <%= user.title %>
         </h4>
         <ul>
-          <li>Grupo o invidual:
+          <li>Tipo de anuncio:
             <%= user.types %>
           </li>
           <li>Descripción:
@@ -35,13 +38,8 @@
       <% }) %>
         <% } else { %>
           <div>
-            <p>The list is empty</p>
+            <p>Todavía no has publicado ningún anuncio.</p>
+            <a class="btn btn-primary" href="/ad/new">Crear anuncio</a>
           </div>
           <% } %>
 </div>
-
-
-Añadir comentarioContraer 
-
-
-Enviar mensaje a @Sébastien Del Mestre 
