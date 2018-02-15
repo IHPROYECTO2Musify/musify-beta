@@ -28,6 +28,21 @@ const checkOwnership = (req, res, next) => {
     if (!ad) {
       return next(new Error("Campaign does not exist"));
     }
+<<<<<<< HEAD
+=======
+
+    if (ad.creator_id.equals(req.user._id)) {
+      next();
+    } else {
+      return next(new Error("You cannot edit this campaign"));
+    }
+  });
+};
+  
+router.get('/new', ensureLoggedIn('/auth/login'), (req, res) => {
+    res.render('ad/new', { city: City, mainInstrument: Instrument, styles: Types });
+});
+>>>>>>> dev
 
     if (ad.creator_id.equals(req.user._id)) {
       next();
@@ -54,18 +69,24 @@ router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
     newAd.save().then(c => {
         //debug('Created ad');
         //req.flash('info', "Ad created")
-        res.redirect('/ad/list');
+        // res.redirect('/ad/list');
+        res.redirect('/ad/show');
     })
     .catch(e => {
       // debug('Error creating ad');
       // req.flash('info', e.message)
       res.redirect("/");
     });
-});
 
-router.get("/list", (req, res) => {
-  Ad.find().exec((err, list) => {
-    res.render("ad/list", { list: list, city: City });
+//attempting to redirect to created ad
+router.get("/show", (req, res, next) => {
+  res.render("ad/show");
+})
+
+router.get("/list", (req,res) => {
+    Ad.find().exec((err, list) => {
+      res.render("ad/list", {list: list});
+    });
   });
 });
 
@@ -134,11 +155,7 @@ router.get("/:id/delete", (req, res) => {
     ad.remove({}, err => {
       res.redirect("/ad/list");
     });
-<<<<<<< HEAD
-  })
-=======
   });
 });
->>>>>>> 2570f37a47ae7981af01e96ef892759a7a0f9dfa
 
 module.exports = router;
