@@ -74,13 +74,14 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     creator_id: req.user._id
     //imgUrl: req.file.filename
   });
-  console.log(newAd);
   newAd
     .save()
     .then(c => {
+        console.log("entra")
       //debug('Created ad');
       //req.flash('info', "Ad created")
-      res.redirect("/ad/list");
+      //res.redirect("/ad/list");
+      res.redirect("/ad/show/" + c._id);
     })
     .catch(e => {
       // debug('Error creating ad');
