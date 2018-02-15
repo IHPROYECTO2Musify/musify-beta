@@ -13,9 +13,10 @@ const debug = require('debug')(`m2-0118-passport-auth:${path.basename(__filename
 const passportConfig = require('./passport')
 const dbURL= process.env.dbURL;
 
+mongoose.promise = Promise;
 mongoose.connect(dbURL)
         .then(() => debug(`Connected to ${dbURL}`))
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
 
 //our main routes
 const index = require('./routes/index');

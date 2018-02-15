@@ -8,7 +8,8 @@ const City= require('../models/CitiesEnum');
 const dbURL= process.env.dbURL;
 
 mongoose.connect(dbURL)
-  .then(() => console.log("Conectado"));
+        .then(() => debug(`Connected to ${dbURL}`))
+        .catch(e => console.log(e));
 
 const myUsers = [
   {
