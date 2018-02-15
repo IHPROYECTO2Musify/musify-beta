@@ -5,7 +5,6 @@ const Instrument = require("../models/InstrumentsEnum");
 const Types = require("../models/StylesEnum");
 const debug = require("debug")("m2-0118-ironfunding:campaign");
 const Ad = require("../models/Ads");
-
 // Upload files with multer
 // const multer = require('multer');
 // const upload = multer({ dest: __dirname + '/../uploads' });
@@ -28,7 +27,6 @@ const checkOwnership = (req, res, next) => {
     if (!ad) {
       return next(new Error("Campaign does not exist"));
     }
-
     if (ad.creator_id.equals(req.user._id)) {
       next();
     } else {
@@ -37,6 +35,7 @@ const checkOwnership = (req, res, next) => {
   });
 };
 
+//Creating a new ad
 router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
   res.render("ad/new", {
     city: City,
@@ -47,7 +46,6 @@ router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
 
 router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
   // , upload.single('image')
-
   const {
     title,
     types,
@@ -59,7 +57,6 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     city
   } = req.body;
   console.log(req.body);
-
   const newAd = new Ad({
     title,
     types,
@@ -69,8 +66,6 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     city,
     audio,
     video,
-    // We're assuming a user is logged in here
-    // If they aren't, this will throw an error
     creator_id: req.user._id
     //imgUrl: req.file.filename
   });
@@ -81,7 +76,6 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
         console.log("entra")
       //debug('Created ad');
       //req.flash('info', "Ad created")
-      //res.redirect("/ad/list");
       res.redirect("/ad/show/" + c._id);
     })
     .catch(e => {
@@ -91,6 +85,7 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     });
   });
 
+//Complete ad list
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
     res.render("ad/list", { list: list, city: City, styles: Types });
@@ -100,7 +95,6 @@ router.get("/list", (req, res) => {
 router.post("/list", (req, res) => {
   const city = req.body.city;
   const styles = req.body.styles;
-
   if (styles == "Cualquiera")  {
     Ad.find({ city: city }).exec((err, list) => {
       res.render("ad/list", { list: list, city: City, styles: Types });
@@ -118,6 +112,18 @@ router.post("/list", (req, res) => {
   }  
 });
 
+//Show the user's ads
+router.get("/my-ads", (req, res) => {
+  Ad.find({creator_id: res.locals.user._id})
+    .then(respuesta => {
+      res.render('ad/my-ads', {list: respuesta})
+    })
+    .catch(error => {
+      console.log(error)
+    });
+  });
+
+//Show newly created ad, to edit or delete 
 router.get("/show/:id", (req, res, next) => {
   Ad.findById(req.params.id)
     .populate("creator_id")
@@ -125,6 +131,7 @@ router.get("/show/:id", (req, res, next) => {
     .catch(e => next(e));
 });
 
+//Edit an ad
 router.get("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
   Ad.findById(req.params.id, (err, ad) => {
     if (err) {
@@ -153,7 +160,6 @@ router.post("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
     video,
     city
   } = req.body);
-
   Ad.findByIdAndUpdate(req.params.id, updates, (err, ad) => {
     if (err) {
       //req.flash('info','Errores al editar');
@@ -170,6 +176,7 @@ router.post("/:id/edit", ensureLoggedIn("/login"), (req, res, next) => {
   });
 });
 
+//Delete an ad
 router.get("/:id/delete", (req, res) => {
   const id = req.params.id;
   Ad.findById(id).exec((err, ad) => {
@@ -178,5 +185,4 @@ router.get("/:id/delete", (req, res) => {
     });
   });
 });
-
 module.exports = router;
