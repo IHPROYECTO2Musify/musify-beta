@@ -96,7 +96,7 @@ router.get("/list", (req, res) => {
     res.render("ad/list", { list: list, city: City, styles: Types });
     });
   });
-});
+
 
 router.post("/list", (req, res) => {
   const city = req.body.city;
