@@ -5,10 +5,11 @@ const firstAds= require('../models/Ads');
 const Instrument = require("../models/InstrumentsEnum");
 const Experience = require("../models/ExpEnum");
 const City= require('../models/CitiesEnum');
+const dbURL= process.env.dbURL;
 
-mongoose
-  .connect("mongodb://localhost/passport-auth-0118")
-  .then(() => console.log("Conectado"));
+mongoose.connect(dbURL)
+       .then(() => debug(`Connected to ${dbURL}`))
+       .catch(e => console.log(e));
 
 const myUsers = [
   {

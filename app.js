@@ -11,12 +11,11 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const debug = require('debug')(`m2-0118-passport-auth:${path.basename(__filename).split('.')[0]}`)
 const passportConfig = require('./passport')
-const {dbURL} = require('./config');
-
+const dbURL= process.env.dbURL;
 
 mongoose.connect(dbURL)
-        .then(() => debug(`Connected to ${dbURL}`))
-        .catch(e => console.log(e))
+       .then(() => debug(`Connected to ${dbURL}`))
+       .catch(e => console.log(e))
 
 //our main routes
 const index = require('./routes/index');
