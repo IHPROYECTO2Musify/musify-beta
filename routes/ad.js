@@ -28,21 +28,6 @@ const checkOwnership = (req, res, next) => {
     if (!ad) {
       return next(new Error("Campaign does not exist"));
     }
-<<<<<<< HEAD
-=======
-
-    if (ad.creator_id.equals(req.user._id)) {
-      next();
-    } else {
-      return next(new Error("You cannot edit this campaign"));
-    }
-  });
-};
-  
-router.get('/new', ensureLoggedIn('/auth/login'), (req, res) => {
-    res.render('ad/new', { city: City, mainInstrument: Instrument, styles: Types });
-});
->>>>>>> dev
 
     if (ad.creator_id.equals(req.user._id)) {
       next();
@@ -88,7 +73,6 @@ router.get("/list", (req,res) => {
       res.render("ad/list", {list: list});
     });
   });
-});
 
 router.post("/list", (req, res) => {
   const city = req.body.city;
