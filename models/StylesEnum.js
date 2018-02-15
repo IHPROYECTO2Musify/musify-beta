@@ -1,4 +1,5 @@
 module.exports = [
+    "Cualquiera",
     "Acústica",
     "Bachata",
     "Blues",

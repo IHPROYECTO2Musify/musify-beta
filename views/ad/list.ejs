@@ -6,8 +6,21 @@
   <%  }) %>
 </select>
 
+<select name="styles" id="styles">
+  <% styles.forEach((styles) => { %>
+    <option type="text" value="<%= styles %>" class="form-control">
+      <%= styles %>
+    </option>
+    <%  }) %>
+</select>
+
 <button type="submit">buscar</button>
 </form>
+
+ <!-- <form action="/ad/list" method="post"> 
+
+<button type="submit">buscar</button> 
+</form> -->
 
 <div id="list">
   <% if (list.length > 0) { %>
@@ -46,8 +59,7 @@
             <%= user.video %>
           </li>
 
-          <a href="/ad/<%= ad._id %>/edit">Editar mi anuncio</a><br>
-              <a href="/delete/<%= user._id %>">Eliminar este anuncio</a>
+          
         </ul>
       </div>
       <hr>
@@ -58,3 +70,5 @@
           </div>
           <% } %>
 </div>
+
+

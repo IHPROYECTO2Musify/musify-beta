@@ -45,16 +45,42 @@ router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
   });
 });
 
-    const newAd = new Ad({
-        title, types, description, styles, mainInstrument, city, audio, video, 
-        creator_id: req.user._id,
-        //imgUrl: req.file.filename
-    });
-    console.log(newAd)
-    newAd.save().then(c => {
-        //debug('Created ad');
-        //req.flash('info', "Ad created")
-        res.redirect('/ad/list');
+router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
+  // , upload.single('image')
+
+  const {
+    title,
+    types,
+    description,
+    styles,
+    mainInstrument,
+    audio,
+    video,
+    city
+  } = req.body;
+  console.log(req.body);
+
+  const newAd = new Ad({
+    title,
+    types,
+    description,
+    styles,
+    mainInstrument,
+    city,
+    audio,
+    video,
+    // We're assuming a user is logged in here
+    // If they aren't, this will throw an error
+    creator_id: req.user._id
+    //imgUrl: req.file.filename
+  });
+  console.log(newAd);
+  newAd
+    .save()
+    .then(c => {
+      //debug('Created ad');
+      //req.flash('info', "Ad created")
+      res.redirect("/ad/list");
     })
     .catch(e => {
       // debug('Error creating ad');
@@ -65,15 +91,29 @@ router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
 
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
-    res.render("ad/list", { list: list, city: City });
+    res.render("ad/list", { list: list, city: City, styles: Types });
   });
 });
 
 router.post("/list", (req, res) => {
   const city = req.body.city;
-  Ad.find({city: city}).exec((err, list) => {
-    res.render("ad/list", { list: list, city: City });
-  });
+  const styles = req.body.styles;
+
+  if (styles == "Cualquiera")  {
+    Ad.find({ city: city }).exec((err, list) => {
+      res.render("ad/list", { list: list, city: City, styles: Types });
+    });
+  }
+  else if (city == "Cualquiera") {
+    Ad.find({ styles: styles}).exec((err, list) => {
+        res.render("ad/list", { list: list, city: City, styles: Types });
+      });
+  }  
+  else  {
+    Ad.find({ cities: cities, styles: styles}).exec((err, list) => {
+        res.render("ad/list", { list: list, city: City, styles: Types });
+      });
+  }  
 });
 
 router.get("/show/:id", (req, res, next) => {
@@ -134,11 +174,7 @@ router.get("/:id/delete", (req, res) => {
     ad.remove({}, err => {
       res.redirect("/ad/list");
     });
-<<<<<<< HEAD
-  })
-=======
   });
 });
->>>>>>> 2570f37a47ae7981af01e96ef892759a7a0f9dfa
 
 module.exports = router;
