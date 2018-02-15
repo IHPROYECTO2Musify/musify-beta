@@ -88,13 +88,11 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
       // req.flash('info', e.message)
       res.redirect("/");
     });
-});
 
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
     res.render("ad/list", { list: list, city: City, styles: Types });
   });
-});
 
 router.post("/list", (req, res) => {
   const city = req.body.city;
