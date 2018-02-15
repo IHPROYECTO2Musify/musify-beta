@@ -21,17 +21,21 @@ const ensureLoggedIn = (redirect_url) => {
 }
 
 const checkOwnership = (req, res, next) => {
-    Ad.findById(req.params.id, (err, ad) => {
-      if (err){ return next(err) }
-      if (!ad){ return next(new Error('Campaign does not exist')) }
-  
-      if (ad.creator_id.equals(req.user._id)){
-        next()
-      } else {
-        return next(new Error('You cannot edit this campaign'))
-      }
-    });
-  }
+  Ad.findById(req.params.id, (err, ad) => {
+    if (err) {
+      return next(err);
+    }
+    if (!ad) {
+      return next(new Error("Campaign does not exist"));
+    }
+
+    if (ad.creator_id.equals(req.user._id)) {
+      next();
+    } else {
+      return next(new Error("You cannot edit this campaign"));
+    }
+  });
+};
   
 router.get('/new', ensureLoggedIn('/auth/login'), (req, res) => {
     res.render('ad/new', { city: City, mainInstrument: Instrument, styles: Types });
@@ -52,7 +56,8 @@ router.post('/new', [ensureLoggedIn('/auth/login')], (req, res, next) => {
     newAd.save().then(c => {
         //debug('Created ad');
         //req.flash('info', "Ad created")
-        res.redirect('/ad/list');
+        // res.redirect('/ad/list');
+        res.redirect('/ad/show');
     })
         .catch(e => {
             // debug('Error creating ad');
@@ -60,6 +65,11 @@ router.post('/new', [ensureLoggedIn('/auth/login')], (req, res, next) => {
             res.redirect('/');
         })
 });
+
+//attempting to redirect to created ad
+router.get("/show", (req, res, next) => {
+  res.render("ad/show");
+})
 
 router.get("/list", (req,res) => {
     Ad.find().exec((err, list) => {
@@ -69,11 +79,11 @@ router.get("/list", (req,res) => {
   
 
 
-router.get('/show/:id', (req, res, next) => {
-    Ad.findById(req.params.id).populate('creator_id')
-        .then(c => res.render('ad/show', { ad: c }))
-        .catch(e => next(e));
-});
+// router.get('/show/:id', (req, res, next) => {
+//     Ad.findById(req.params.id).populate('creator_id')
+//         .then(c => res.render('ad/show', { ad: c }))
+//         .catch(e => next(e));
+// });
 
 router.get('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
     Ad.findById(req.params.id, (err, ad) => {
