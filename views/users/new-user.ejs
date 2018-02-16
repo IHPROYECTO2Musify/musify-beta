@@ -1,21 +1,19 @@
 <div class="container">
   <div class="row">
-
-     
-      <form action="/users/new-user" method="POST" >
-        <div class="welcome">
-          <p>¡Bienvenido a <strong>Bremen.io!</strong> Ahora que ya estás registrado, vamos a completar tu perfil.<br> Recuerda que aunque no todos los campos son obligatorios, cuanta más información puedas ofrecer,<br> mejor será la idea que se puedan hacer otros usuarios de ti como músico</p>
-         <br>
+    <div class="col-sm-6 col-sm-offset-3 centered-form"></div>
+      <form action="/users/new-user" method="POST">
+        <div>
+          <h4>¡Bienvenido a Bremen.io! Ahora que ya estás registrado, vamos a completar tu perfil.  Recuerda que aunque no todos los campos son obligatorios, cuanta más información puedas ofrecer, mejor será la idea que se puedan hacer otros usuarios de ti como músico</h4>
         </div>
 
         <div class="parent-box">
         <div class="form-group">
-          <label for="title"><strong>Crea tu perfil</strong></label>
+          <label for="title"><h2>Crea tu perfil</h2></label>
         </div>
         <br>
         <div class="form-group">
-          <label for="profile-picture"><strong>Avatar</strong></label>
-          <img src="https://pbs.twimg.com/profile_images/889232092441214978/beVAb2-k_400x400.jpg" height="200px" width="200px">
+          <label for="profile-picture"><strong>Avatar</strong></label></br>
+          <img src="https://pbs.twimg.com/profile_images/889232092441214978/beVAb2-k_400x400.jpg" height="200px" width="200px"></br>
           <p>Inserta aquí tu imagen de perfil. Puedes cambiarla cuando quieras desde las opciones de edición de perfil.</p>
           <input type="file" name="image" class="form-control"> 
         </div>

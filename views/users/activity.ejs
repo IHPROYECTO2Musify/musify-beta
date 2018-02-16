@@ -1,21 +1,38 @@
-<a href="/">Ir a inicio</a>
+<div class="container">
+    <div class="row" >
+<a class="btn btn-primary" href="/">Ir a inicio</a>
 <a class="btn btn-primary" href="/ad/list">Ver lista completa de anuncios</a>
 <h2>Mi actividad</h2>
 <div class="profile"><img class="user-image" src="https://pbs.twimg.com/profile_images/889232092441214978/beVAb2-k_400x400.jpg" width="200px" height="200px">
-<strong> <%=  user.username %></strong><br>
-<strong> <%=  user.city %></strong><br>
-<i> <%=  user.description %></i><br>
-<strong>Instrumento principal: </strong> <%=  user.mainInstrument %><br>
-<p> <%=  user.experience %></p><br>
-<strong>Otros instrumentos: </strong> <%=  user.otherInstrument %><br>
+
+<!-- <strong>    <%=  user.imgUrl %></strong> -->
+<br/>
+<strong> <%=  user.username %></strong>
+<br/>
+
+
+<strong> <%=  user.city %></strong>
+<br/>
+<strong> <%=  user.description %></strong>
+<br/>
+<strong>Instrumento principal: </strong> 
+<br/>
+<strong><%=  user.mainInstrument %></strong>
+<br/>
+<strong> <%=  user.experience %></strong>
+<br/>
+<strong> <%=  user.otherInstrument %> </strong><br>
 </div>
+
+<br/>
 
 <a class="btn btn-primary" href="/users/<%= user._id %>/edit">Editar mis datos</a>
 <a class="btn btn-primary" href="/ad/new">Crear anuncio</a>
 <a class="btn btn-primary" href="/ad/my-ads">Mis anuncios</a>
 <a class="btn btn-primary" href="/blank">Mis mensajes</a>
-<br>
-
 <a class="btn btn-primary" href="/users/<%= user._id %>/delete">Eliminar mi perfil</a>
 
+<br>
+</div>
 
+</div>
