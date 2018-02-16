@@ -1,29 +1,49 @@
-<!-- views/ads/nuevoProyecto.ejs -->
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 centered-form">
       <!-- <form action="/ad/new" method="post" enctype="multipart/form-data"> -->
+      <a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
+      <br>
+      <br>
       <form action="/ad/new" method="post">
 
         <div class="form-group">
-          <label for="title">Nombre de tu grupo o Proyecto</label>
+          <label for="title"><strong>Nombre de tu grupo o proyecto</strong></label>
+          <p>Describe brevemente quién eres, y qué buscas (un músico, un tipo de banda en concreto...)</p>
           <input type="text" name="title" class="form-control">
         </div>
-
+        <br>
         <div class="form-group">
-          <label for="types">Tipo de anuncio</label>
+          <label for="types"><strong>Tipo de anuncio</strong></label>
+          <p>Grupo busca músico / Músico busca grupo</p>
           <input type="text" name="types" class="form-control">
         </div>
 
+        <!-- <div class="form-group">
+            <label for="types"><strong>Tipo de anuncio</strong></label>
+            <p>¿Buscas un grupo, o quieres crearlo?</p>
+            <select name="types" id="types">
+              <% types.forEach((types) => { %>
+                <option type="text" value="<%= types %>" class="form-control">
+                  <%= types %>
+                </option>
+                <%  }) %>
+            </select>
+          </div> -->
+
+        <br>
         <div class="form-group">
-          <label for="description">Descripción</label>
+          <label for="description"><strong>Descripción</strong></label>
+          <p>Cuenta tu idea a los demás usuarios. ¡No te cortes a la hora de incluir detalles!<br>
+          Así el resto de los usuarios se harán la mejor idea posible de tu proyecto.</p>
           <input type="text" name="description" class="form-control">
         </div>
-
+        <br>
 
         <div class="form-group">
-          <label for="city">Ciudad</label>
-          <br>
+          <label for="city"><strong>Ciudad</strong></label>
+          <p>¿Desde dónde quieres lanzar tu idea?</p>
           <select name="city" id="city">
             <% city.forEach((city) => { %>
               <option type="text" value="<%= city %>" class="form-control">
@@ -32,10 +52,11 @@
               <%  }) %>
           </select>
         </div>
+        <br>
 
         <div class="form-group">
-          <label for="styles">Estilos y Etiquetas</label>
-          <br>
+          <label for="styles"><strong>Estilos</strong></label>
+          <p>Aunque tu grupo mezcle estilos, seguramente haya uno que se ajuste bien a tu proyecto.</p>
           <select name="styles" id="styles">
             <% styles.forEach((styles) => { %>
               <option type="text" value="<%= styles %>" class="form-control">
@@ -44,9 +65,12 @@
               <%  }) %>
           </select>
         </div>
+        <br>
 
         <div class="form-group">
-          <label for="main-instrument">Instrumento Principal</label>
+          <label for="main-instrument"><strong>Instrumento principal</strong></label>
+          <p>Si estás montando una banda nueva, selecciona qué miembro o instrumento buscas<br>
+            Si eres músico, indica cuál es tu instrumento o disciplina principal.</p>
           <br>
           <select name="mainInstrument" id="instrument">
             <% mainInstrument.forEach((mainInstrument) => { %>
@@ -56,19 +80,22 @@
               <%  }) %>
           </select>
         </div>
+     <br>
 
         <div class="form-group">
           <label for="audio">¿Habéis grabado alguna canción?</label>
-          <input type="text" name="audio" class="form-control">
+          <input type="text" name="audio" class="form-control" placeholder="Incluye un enlace">
         </div>
+     <br>
 
         <div class="form-group">
           <label for="video">¿Tenéis videos en directo?</label>
-          <input type="text" name="video" class="form-control">
+          <input type="text" name="video" class="form-control" placeholder="Incluye un enlace">
         </div>
-
+     <br>
+     
         <div class="form-group">
-          <button type="submit">Crear Anuncios</button>
+          <button type="submit">Publicar</button>
         </div>
       </form>
     </div>

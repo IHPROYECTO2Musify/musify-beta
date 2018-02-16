@@ -4,7 +4,7 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1>Bienvenido a  Musify</h1>
+    <h1>Bienvenido a Bremen.io</h1>
     <p>Un lugar donde podrás buscar a ese músico que te falta para lanzar el proyecto musical que siempre buscaste<br>
     o buscar un grupo con vacantes abiertas en nuestra lista de anuncios</p>
     <% if(!user) { %>
@@ -15,7 +15,7 @@
     <% } else { %>
       <h2>Hola <%= user.username %></h2>
     </br>
-      <a href="/onlyme?id=<%= user._id %>">Onlyme</a>
+    <a class="btn btn-primary" href="/users/activity">Ir a mi perfil</a>
       <a href="/auth/logout">Logout</a>
     <% } %>
   </body>

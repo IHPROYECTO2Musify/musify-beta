@@ -23,7 +23,6 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const ad = require('./routes/ad');
-
 const app = express();
 
 // view engine setup
@@ -48,8 +47,8 @@ app.use(session({
     ttl: 24 * 60 * 60 // 1 day
   })
 }));
-passportConfig(app);
 
+passportConfig(app);
 app.use((req,res,next) => {
   res.locals.user = req.user;
   res.locals.title = 'Passport Auth 0118';
@@ -60,7 +59,6 @@ app.use('/', index);
 app.use('/auth', auth);
 app.use('/users', users);
 app.use('/ad', ad);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -73,7 +71,6 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');

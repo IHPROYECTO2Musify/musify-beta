@@ -5,7 +5,7 @@ const Instrument = require("../models/InstrumentsEnum");
 const Types = require("../models/StylesEnum");
 const debug = require("debug")("m2-0118-ironfunding:campaign");
 const Ad = require("../models/Ads");
-
+const Category= require("../models/TypesEnum");
 // Upload files with multer
 // const multer = require('multer');
 // const upload = multer({ dest: __dirname + '/../uploads' });
@@ -28,7 +28,6 @@ const checkOwnership = (req, res, next) => {
     if (!ad) {
       return next(new Error("Campaign does not exist"));
     }
-
     if (ad.creator_id.equals(req.user._id)) {
       next();
     } else {
@@ -36,7 +35,6 @@ const checkOwnership = (req, res, next) => {
     }
   });
 };
-
 
 //Creating a new ad
 router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
@@ -49,7 +47,6 @@ router.get("/new", ensureLoggedIn("/auth/login"), (req, res) => {
 
 router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
   // , upload.single('image')
-
   const {
     title,
     types,
@@ -61,7 +58,6 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
     city
   } = req.body;
   console.log(req.body);
-
   const newAd = new Ad({
     title,
     types,
@@ -93,14 +89,13 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
 //Complete ad list
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
-    res.render("ad/list", { list: list, city: City, styles: Types });
+    res.render("ad/list", { list: list, city: City, styles: Types, types: Category });
     });
   });
 
 router.post("/list", (req, res) => {
   const city = req.body.city;
   const styles = req.body.styles;
-
   if (styles == "Cualquiera")  {
     Ad.find({ city: city }).exec((err, list) => {
       res.render("ad/list", { list: list, city: City, styles: Types });

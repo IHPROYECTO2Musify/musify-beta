@@ -1,6 +1,7 @@
 <!-- ad/show.ejs -->
 <div class="container campaign-container">
   <div class="row">
+    <a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
     <div class="col-sm-2">
 
       <% if(user._id.equals(ad.creator_id._id)) { %>
@@ -15,11 +16,10 @@
     </div>
     <div class="col-sm-10">
       <h1><%= ad.title %></h1>
-      <p class="campaign-category">Grupo o Individual: <%= ad.types %></p>
-      <p class="campaign-description">Descripción: <%= ad.description %></p>
-      <p class="campaign-category">Ciudad: <%= ad.city %></p>
-      <p class="campaign-description">Estilos o Etiquetas: <%= ad.styles %></p>
-      <p class="campaign-category">Instrumento Principal: <%= ad.mainInstrument %></p>
+      <p class="campaign-category">Tipo de anuncio: <%= ad.types %></p>
+      <p class="campaign-description"> <%= ad.description %></p>
+      <p class="campaign-category"> <%= ad.city %></p>
+      <p class="campaign-description"> <%= ad.styles %></p>
       <p class="campaign-description">Audio: <%= ad.audio %></p>
       <p class="campaign-category">Video: <%= ad.video %></p>
       

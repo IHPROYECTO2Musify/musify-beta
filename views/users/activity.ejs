@@ -1,20 +1,21 @@
 <a href="/">Ir a inicio</a>
-<a class="btn btn-primary" href="/ad/list">Ver listado de anuncios</a>
+<a class="btn btn-primary" href="/ad/list">Ver lista completa de anuncios</a>
 <h2>Mi actividad</h2>
 <div class="profile">
-<strong>Avatar: <%=  user.imgUrl %></strong><br>
+<strong>    <%=  user.imgUrl %></strong><br>
 <strong> <%=  user.username %></strong><br>
-<p>  <%=  user.description %>  </p><br>
+<!-- <strong>Correo electrónico: <%=  user.email %></strong><br> -->
 <strong> <%=  user.city %></strong><br>
-<strong>Instrumento principal: <%=  user.mainInstrument %></strong><br>
-<strong>Otros instrumentos: <%=  user.otherInstrument %></strong><br>
-<strong> <%=  user.experience %></strong><br>
-
+<i> <%=  user.description %></i><br>
+<strong>Instrumento principal: </strong> <%=  user.mainInstrument %><br>
+<p> <%=  user.experience %></p><br>
+<strong>Otros instrumentos: </strong> <%=  user.otherInstrument %><br>
 </div>
 
 <a class="btn btn-primary" href="/users/<%= user._id %>/edit">Editar mis datos</a>
 <a class="btn btn-primary" href="/ad/new">Crear anuncio</a>
-<a class="btn btn-primary" href="/ad/my-ads">Ver mis anuncios</a>
+<a class="btn btn-primary" href="/ad/my-ads">Mis anuncios</a>
+<a class="btn btn-primary" href="/blank">Mis mensajes</a>
 <br>
 <br>
 <br>
