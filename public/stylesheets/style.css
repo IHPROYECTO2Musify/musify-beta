@@ -124,6 +124,37 @@ nav.navbar {
   color: #05AF3C;
 }
 
+.signup {
+  display: block;
+  margin: 50px;
+}
+
+.btn-signup {
+margin-left: 200px;
+}
+
+.claim {
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+}
+
+.label {
+  font-size: 200px;
+}
+
+.welcome {
+  margin: 10px; 
+  text-align: center
+}
+.remember {
+  margin: 10px; 
+  text-align: center
+}
+
+.parent-box>p {
+padding: 5px;
+}
 .light-text {
   color: #626369;
 }
