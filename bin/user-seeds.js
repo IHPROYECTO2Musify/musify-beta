@@ -9,13 +9,8 @@ const dbURL= process.env.dbURL;
 
 mongoose.connect(dbURL)
         .then(() => debug(`Connected to ${dbURL}`))
-<<<<<<< HEAD
-        .catch(e => console.log(e));
-
-=======
         .catch(e => console.log(e))
         
->>>>>>> dev
 const myUsers = [
   {
     username: "Hanzo Shimada",

@@ -1,47 +1,59 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  background-color: grey; 
+  color: blue;
 }
 
 a {
-  color: rgb(62, 2, 90);
+  /* color: rgb(62, 2, 90); */
+  color: blue;
+}
+
+#carousel-example-generic {
+  margin-top: -45px;
+
 }
 
 
 /* public/stylesheets/styles.css */
 .main-container {
-  padding-top: 25px;
+  padding-top: 10px;
 }
 
 nav.navbar {
-  box-shadow: 0px 4px 10px 0 rgba(22,22,22,0.08);
-  margin-bottom: 0;
-}
-
-.nav > li > a {
-  color: black;
+  /* box-shadow: 0px 4px 10px 0 rgba(22,22,22,0.08); */
+  margin-bottom: 0px;
+ background-color: white;
 }
 
 .nav > li.nav-logo {
   width: 174px;
   display: block;
   position: absolute;
-  left: 50%;
+  left: 30%;
   margin-left: -87px;
 }
 
 .nav-logo-image {
-  height: 17px;
+  height: 100%;
   width: 100%;
+
 }
 
 .nav > .li-logout {
-  padding: 7px;
+  padding: 2px;
+}
+
+.btn {
+  margin-top: -400px;
 }
 
 .btn-logout {
   color: black;
 }
+
 
 .home-heading {
   background-color: #E3ECFA;
@@ -97,6 +109,10 @@ nav.navbar {
   font-size: 1.1em;
 }
 
+.footer {
+  background-color: black;
+}
+
 /* public/stylesheets/style.css */
 .campaign-image {
   width: 100%;
@@ -140,8 +156,8 @@ progress {
 }
 
 .backer-btn:hover {
-  color: white;
-  background-color: #05AF3C;
+  color: black;
+  background-color: grey;
 }
 
 .campaign-category {
@@ -155,4 +171,17 @@ progress {
 
 .campaign-description {
   padding-right: 275px;
+}
+
+
+.specs-wrapper {
+  height: 300px;
+}
+
+.revera-services {
+  margin-top: 150px;
+}
+
+.text-uppercase {
+  margin-top: 100px;
 }

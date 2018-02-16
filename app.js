@@ -1,6 +1,6 @@
 const dotenv = require('dotenv').config() 
 const express = require('express');
-// const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -28,8 +28,8 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// app.set('layout', 'layouts/main');
-// app.use(expressLayouts);
+app.set('layout', 'layouts/main');
+app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

@@ -93,6 +93,7 @@ router.get("/list", (req, res) => {
     });
   });
 
+
 router.post("/list", (req, res) => {
   const city = req.body.city;
   const styles = req.body.styles;
