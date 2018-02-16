@@ -1,4 +1,7 @@
-<h1>Listado de Anuncios</h1>
+<a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
+<a class="btn btn-primary" href="/ad/my-ads">Mis anuncios</a>
+
+<h1>Listado de anuncios</h1>
 
 <form action="/ad/list" method="post"> 
 <select name="city" id="city">
@@ -6,7 +9,6 @@
     <option type="text" value="<%= city %>" class="form-control"><%= city %></option>
   <%  }) %>
 </select>
-
 <select name="styles" id="styles">
   <% styles.forEach((styles) => { %>
     <option type="text" value="<%= styles %>" class="form-control">
@@ -14,7 +16,6 @@
     </option>
     <%  }) %>
 </select>
-
 <button type="submit">buscar</button>
 </form>
 
@@ -25,36 +26,29 @@
         <h4>
           <%= user.title %>
         </h4>
-
         <ul>
           <li>Grupo o invidual:
             <%= user.types %>
           </li>
 
-          <li>Descripción:
             <%= user.description %>
-          </li>
-
-          <li>Estilos y Etiquetas:
+ 
+          <li>Estilos :
             <%= user.styles %>
           </li>
-
           <li>Instrumento Principal:
             <%= user.mainInstrument %>
           </li>
-
-          <li>Ciudad:
+          <li><i>
             <%= user.city %>
+          </i>
           </li>
-
           <li>Audio:
             <%= user.audio %>
           </li>
-
           <li>Video:
             <%= user.video %>
           </li>
-
           
         </ul>
       </div>
@@ -66,5 +60,3 @@
           </div>
           <% } %>
 </div>
-
-

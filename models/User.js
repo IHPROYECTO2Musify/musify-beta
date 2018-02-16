@@ -13,7 +13,7 @@ const userSchema = new Schema({
     mainInstrument: { type: String, enum: Instrument, required: true }, 
     otherInstrument: { type: String, enum: Instrument}, 
     experience: { type: String, enum: Experience},
-    imgUrl: { type: String, default: "https://placeholdit.imgix.net/~text?txtsize=50&txt=Ironfunding&w=250&h=250" }
+    imgUrl: { type: String, default: "https://pbs.twimg.com/profile_images/889232092441214978/beVAb2-k_400x400.jpg" }
 },{
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

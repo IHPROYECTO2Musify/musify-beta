@@ -1,5 +1,7 @@
 <h1>Mis anuncios</h1>
 
+<a class="btn btn-primary" href="/users/activity">Volver a mi perfil</a>
+
 <div id="list">
   <% if (list.length > 0) { %>
     <% list.forEach(function(user) { %>
@@ -7,36 +9,28 @@
         <h4>
           <%= user.title %>
         </h4>
-
         <ul>
-          <li>Grupo o invidual:
+          <li>Tipo de anuncio:
             <%= user.types %>
           </li>
-
           <li>Descripción:
             <%= user.description %>
           </li>
-
           <li>Estilos y Etiquetas:
             <%= user.styles %>
           </li>
-
           <li>Instrumento Principal:
             <%= user.mainInstrument %>
           </li>
-
           <li>Ciudad:
             <%= user.city %>
           </li>
-
           <li>Audio:
             <%= user.audio %>
           </li>
-
           <li>Video:
             <%= user.video %>
           </li>
-
           
         </ul>
       </div>
@@ -44,8 +38,8 @@
       <% }) %>
         <% } else { %>
           <div>
-            <p>The list is empty</p>
+            <p>Todavía no has publicado ningún anuncio.</p>
+            <a class="btn btn-primary" href="/ad/new">Crear anuncio</a>
           </div>
           <% } %>
 </div>
-

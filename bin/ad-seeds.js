@@ -9,7 +9,8 @@ const dbURL= process.env.dbURL;
 
 mongoose.connect(dbURL)
         .then(() => debug(`Connected to ${dbURL}`))
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
+
 
 const myAds = [
   {
