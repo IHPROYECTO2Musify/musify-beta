@@ -5,6 +5,7 @@ const Instrument = require("../models/InstrumentsEnum");
 const Types = require("../models/StylesEnum");
 const debug = require("debug")("m2-0118-ironfunding:campaign");
 const Ad = require("../models/Ads");
+const Category= require("../models/TypesEnum");
 // Upload files with multer
 // const multer = require('multer');
 // const upload = multer({ dest: __dirname + '/../uploads' });
@@ -88,7 +89,7 @@ router.post("/new", [ensureLoggedIn("/auth/login")], (req, res, next) => {
 //Complete ad list
 router.get("/list", (req, res) => {
   Ad.find().exec((err, list) => {
-    res.render("ad/list", { list: list, city: City, styles: Types });
+    res.render("ad/list", { list: list, city: City, styles: Types, types: Category });
     });
   });
 

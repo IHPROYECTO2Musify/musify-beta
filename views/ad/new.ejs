@@ -1,4 +1,4 @@
-<!-- views/ads/nuevoProyecto.ejs -->
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 centered-form">
@@ -19,6 +19,19 @@
           <p>Grupo busca músico / Músico busca grupo</p>
           <input type="text" name="types" class="form-control">
         </div>
+
+        <!-- <div class="form-group">
+            <label for="types"><strong>Tipo de anuncio</strong></label>
+            <p>¿Buscas un grupo, o quieres crearlo?</p>
+            <select name="types" id="types">
+              <% types.forEach((types) => { %>
+                <option type="text" value="<%= types %>" class="form-control">
+                  <%= types %>
+                </option>
+                <%  }) %>
+            </select>
+          </div> -->
+
         <br>
         <div class="form-group">
           <label for="description"><strong>Descripción</strong></label>
